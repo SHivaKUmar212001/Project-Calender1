@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.conf import settings
 from django.contrib.auth.models import User
-
+from django.contrib.sessions.models import Session
 
 MeetingType= (
     ('Interview','Interview'),
@@ -18,14 +18,17 @@ class Event(models.Model):
     title = models.CharField(max_length=200)
     Host_ID = models.ForeignKey(User,on_delete=models.CASCADE, default = User)
     Meeting_ClientName = models.CharField(max_length=200)
-    Meeting_ClientID = models.EmailField(max_length=200)
+    Meeting_Client_Email = models.EmailField(max_length=200)
     Meeting_Link = models.CharField(max_length=200)
     Meeting_Type = models.CharField(max_length=40, choices=MeetingType)
     Purpose_Of_Meeting = models.TextField()
     Meeting_time = models.DateTimeField()
 
-
-
+#1) mail se link bhejna h
+#2) models.py new field of boolean value
+#3) webpage to show details
+#4) general (without login ) API to call confirm
+#5)
 
     @property
     def get_html_url(self):
@@ -38,3 +41,8 @@ class LoggedInUser(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+
+class Confirm(models.Model):
+    confirm = models.BooleanField(default=False)

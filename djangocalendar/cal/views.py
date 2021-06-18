@@ -70,8 +70,10 @@ def registerPage(request):
 
 #     # else:
 #     #     return HttpResponse("User doesnot exist")
+curr_user = ""
 
 def loginPage(request):
+    curr_user = ""
     # if request.session.get(pk,use_id):
     #     return HttpResponse(user.id)
 
@@ -85,6 +87,8 @@ def loginPage(request):
         # user=request.session['user']
 
         if user is not None:
+            curr_user = user.username
+            print (curr_user)
             login(request,user)
             return redirect('cal:calendar')
         else:
@@ -94,8 +98,6 @@ def loginPage(request):
     context={}
     return render(request, 'cal/login.html', context)
 
-    # else:
-    #     return HttpResponse("User doesnot exist")
 
 def logoutUser(request):
     logout(request)
@@ -107,10 +109,14 @@ def index(request):
 def nav(request):
     return render(request, 'cal/nav.html')
 
+
 class CalendarView(generic.ListView):
+
     model = Event
     template_name = 'cal/calendar.html'
+
     def get_context_data(self, **kwargs):
+
         context = super().get_context_data(**kwargs)
         d = get_date(self.request.GET.get('month', None))
         cal = Calendar(d.year, d.month)
@@ -160,10 +166,29 @@ def event(request, event_id=None):
         print(btn_name)
         if btn_name == "Send Email":
             sub= instance.title
-            body= instance.Purpose_Of_Meeting
+            body_str="Hi {} this is a notification for Meeting \n Meeting Purpose : {} \n Meeting Link : {}".format(instance.Meeting_ClientName,instance.Purpose_Of_Meeting,instance.Meeting_Link)
+
             from_email= settings.EMAIL_HOST_USER
-            to_email= instance.Meeting_ClientID
-            send_mail(sub, body, from_email,[to_email],fail_silently=False,)
-            return HttpResponse("Email is send")
+            to_email= instance.Meeting_Client_Email
+            send_mail(sub, body_str, from_email,[to_email],fail_silently=False,)
+
         return HttpResponseRedirect(reverse('cal:calendar'))
+    return render(request, 'cal/event.html', {'form': form})
+
+
+from .forms import EventForm# import that created class in previous step
+from django.template.context_processors import csrf
+def Mail(request):
+  context = {}
+  context.update(csrf(request))
+  context["form"] = EventForm()
+  return render(request, 'cal/mail.html', context)
+
+def confirm(request, event_id=None):
+    obj = Confirm()
+    btn = request.POST.get('Confirm')
+    print(btn)
+    if btn == "Confirm":
+        obj.confirm = True
+
     return render(request, 'cal/event.html', {'form': form})

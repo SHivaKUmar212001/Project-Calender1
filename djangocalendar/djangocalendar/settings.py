@@ -19,8 +19,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'shibakumarpalo123@gmail.com'
-EMAIL_HOST_PASSWORD = 'shiba@allen'
+EMAIL_HOST_USER = 'sk8406062@gmail.com'
+EMAIL_HOST_PASSWORD = 'ShivaKumar2001'
 EMAIL_USE_SSL = False
 
 
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cal.apps.CalConfig',
+    'django_bootstrap_calendar',
 ]
 
 MIDDLEWARE = [

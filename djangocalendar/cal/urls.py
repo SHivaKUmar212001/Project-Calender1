@@ -3,12 +3,12 @@ from django.conf.urls import url
 from . import views
 from django.urls import path
 
-
+# ans = whichuser
 app_name = 'cal'
 urlpatterns = [
     # path('register/',views.registerPage,name='register'),
     # path('login/',views.loginPage,name='login'),
-
+    url(r'^mail/$',views.Mail, name='mail'),
     url(r'^register/$',views.registerPage,name='register'),
     url('^login/$',views.loginPage,name='login'),
     url('^logout/$',views.logoutUser,name='logout'),
