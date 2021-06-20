@@ -1,0 +1,61 @@
+.calendar {
+  width: 98%;
+  margin: auto;
+  font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.calendar tr, .calendar td {
+
+
+  /* position: absolute; */
+  /* position: absolute; */
+  right: 50%;
+  bottom: -21px;
+  padding: 0px 5px;
+  text-align: -webkit-match-parent;
+  width: 26px;
+  /* margin-right: -17px; */
+  border: 1px solid deepskyblue;
+  background: gainsboro;
+
+}
+
+.calendar th {
+  padding: 10px;
+      text-align: center;
+      font-size: 28px;
+      font-family: Helvetica Neue;
+      background: whitesmoke;
+}
+
+.calendar td {
+  width: 200px;
+  height: 150px;
+  padding: 20px 0px 0px 5px;
+}
+.calendar td:hover{
+  background-color: #a4e0a6;
+}
+
+.month {
+  font-size:20px;
+}
+
+.date {
+  font-size: 16px;
+}
+
+ul {
+  height: 100%;
+  padding: 0px 5px 0px 20px;
+}
+
+a {
+  color: #17a2b8;
+}
+
+.date{
+  font-size: 24px;
+font-family: "Helvetica Neue";
+}

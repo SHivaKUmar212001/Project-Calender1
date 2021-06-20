@@ -1,0 +1,15 @@
+
+<h1> client name: {{instance.Meeting_ClientName}}</h1>
+
+
+<h1> Link: {{instance.Meeting_Link}}</h1>
+<h1> Purpose: {{instance.event_id}}</h1>
+
+<script type="text/javascript">
+  var id = {{instance.event_id}}
+  console.log(id)
+</script>
+<form method="POST" action="." enctype="multipart/form-data">
+{% csrf_token %}
+<button type="submit" name="Confirm" value="CONFIRM"> Confirm </button>
+</form>
