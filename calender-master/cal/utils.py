@@ -21,7 +21,11 @@ class Calendar(HTMLCalendar):
 		events_per_day = events.filter(Meeting_time__day=day)
 		d = ''
 		for event in events_per_day:
-			d += f'<li> {event.get_html_url} </li>'
+			print(event.confirm,"-----//")
+			conf = ""
+			if event.confirm:
+				conf = "Confirmed"
+			d += f'<li> {event.get_html_url} {conf} </li>'
 
 		if day != 0:
 			return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
@@ -37,7 +41,8 @@ class Calendar(HTMLCalendar):
 	# formats a month as a table
 	# filter events by year and month
 	def formatmonth(self, withyear=True):
-		for i  in LoggedInUser.objects.all():
+		ans= 10
+		for i in LoggedInUser.objects.all():
 				# print("logged in",i.user)
 				ans = i.user
 				# print("final",ans)

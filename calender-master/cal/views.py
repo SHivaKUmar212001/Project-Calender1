@@ -123,6 +123,14 @@ def check(request,event_id):
         instance = get_object_or_404(Event, pk=event_id)
     if event_id and request.method=="POST":
         obj.confirm = True
+        try:
+
+            event_obj = Event.objects.get(id=event_id)
+            event_obj.confirm = True
+            event_obj.save()
+            print(event_obj,"/////")
+        except Exception as e:
+            print(e)
         print(event_id)
         instance = get_object_or_404(Event, pk=event_id)
         print(instance.Meeting_ClientName)

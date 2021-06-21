@@ -1,8 +1,0 @@
-{% extends "admin/change_form.html" %}
-
-{% block form_top %}
-    <form action="{% url 'send-email' pk=original.id %}" method="POST">
-          {% csrf_token %}
-          <input type="submit" value="Send Email" name="email">.
-    </form>
-{% endblock %}

@@ -23,7 +23,7 @@ class Event(models.Model):
     Meeting_Type = models.CharField(max_length=40, choices=MeetingType)
     Purpose_Of_Meeting = models.TextField()
     Meeting_time = models.DateTimeField()
-    #Confirm = models.BooleanField(default=False,editable=False)
+    confirm = models.BooleanField(default=False,editable=False)
     @property
     def get_html_url(self):
         url = reverse('cal:event_edit', args=(self.id,))

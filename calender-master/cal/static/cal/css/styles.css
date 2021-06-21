@@ -16,8 +16,8 @@
   text-align: -webkit-match-parent;
   width: 26px;
   /* margin-right: -17px; */
-  border: 1px solid deepskyblue;
-  background: gainsboro;
+  border: 1px solid #5937cf;;
+  background: #e7fbf3;
 
 }
 
@@ -26,7 +26,7 @@
       text-align: center;
       font-size: 28px;
       font-family: Helvetica Neue;
-      background: whitesmoke;
+      background: #e2e4fc;
 }
 
 .calendar td {
